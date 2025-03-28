@@ -1,0 +1,46 @@
+def process_musical_competition_participants():
+    """
+    Manages participant details for a musical competition, including age validation and state-wise participant counts.
+    """
+    n = int(input("Enter the number of participants details to be created: "))
+
+    student_list = []
+
+    if n > 0:
+        for i in range(n):
+            student = {}
+            name = input("Name: ")
+            state = input("State: ")
+            age = int(input("Age: "))
+
+            if age <= 10 or age > 80:
+                print("Invalid input: Age must be between 11 and 80.")
+                continue
+
+            student["Name"] = name
+            student["State"] = state
+            student["Age"] = age
+            student_list.append(student)
+
+        print("\nHere's the list of participants' details:")
+        for participant in student_list:
+            print(participant)
+
+        state_counts = {}
+        for participant in student_list:
+            if participant["State"] not in state_counts.keys():
+                state_counts[participant["State"]] = 1
+            else:
+                state_counts[participant["State"]] += 1
+
+        print("\nState-wise participant counts:")
+        for state, count in state_counts.items():
+            print(f"State: {state} Count: {count}")
+    else:
+        print("Invalid input: Number of participants must be greater than 0.")
+        if student_list:
+            print("\nHere's the list of participants' details (if any):")
+            for participant in student_list:
+                print(participant)
+
+process_musical_competition_participants()
