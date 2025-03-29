@@ -1,0 +1,49 @@
+def main():
+    try:
+        n = int(input("No. of Residents: "))
+        if n <= 0:
+            print("Invalid")
+            return
+        
+        List_of_Residents = []
+        
+        for i in range(n):
+            print(f"\nResident {i + 1}:")
+            name = input("Name: ")
+            age = int(input("Age: "))
+            if not (21 <= age <= 58):
+                print("Invalid")
+                return
+            
+            designation = input("Designation: ")
+            band = input("Band: ").upper()
+            
+            if band not in ["A", "B", "C", "D"]:
+                print("Invalid")
+                return
+            
+            List_of_Residents.insert(len(List_of_Residents), (name, age, designation, band))
+        
+        print(('NAME', 'AGE', 'DESIGNATION', 'BAND'))
+        for resident in List_of_Residents:
+            print(resident)
+        
+        band = input("Enter your band of interest: ").upper()
+        if band not in ["A", "B", "C", "D"]:
+            print("Invalid")
+            return
+        
+        band_res = [r for r in List_of_Residents if r[3] == band]
+        
+        print(('NAME', 'AGE', 'DESIGNATION', 'BAND'))
+        if band_res:
+            for resident in band_res:
+                print(resident)
+        else:
+            print("No resident under this band")
+
+    except ValueError:
+        print("Invalid")
+
+if __name__ == "__main__":
+    main()
