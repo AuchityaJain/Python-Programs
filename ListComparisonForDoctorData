@@ -1,0 +1,39 @@
+def main():
+    try:
+        n1 = int(input())
+        if n1 <= 0:
+            print("Invalid list size")
+            return
+        
+        all_doctors = []
+        for _ in range(n1):
+            doc_id = int(input())
+            if doc_id <= 0:
+                print("Invalid Id")
+                return
+            all_doctors.append(doc_id)
+        
+        n2 = int(input())
+        if n2 < 0 or n2 == 0:  # Corrected line: Check for n2 == 0
+            print("Invalid list size")
+            return
+            
+        working_doctors = []
+        for _ in range(n2):
+            doc_id = int(input())
+            if doc_id <= 0:
+                print("Invalid Id")
+                return
+            working_doctors.append(doc_id)
+        
+        not_working = [doc_id for doc_id in all_doctors if doc_id not in working_doctors]
+        
+        if not_working:
+            print("Not Working Doctors' IDs are:")
+            print(*not_working)
+        
+    except ValueError:
+        print("Invalid Id")
+
+if __name__ == '__main__':
+    main()
