@@ -1,0 +1,30 @@
+def find_prime(start, end):
+    if start < 0 or end < 0 or start > end:
+        return "Invalid range"
+    if start == end:
+        return "There are no prime numbers in this range"
+
+    primes = []
+
+    for num in range(start, end + 1):
+        if num > 1:
+            for i in range(2, int(num**0.5) + 1):
+                if num % i == 0:
+                    break
+            else:
+                primes.append(num)
+
+    if not primes:
+        return "There are no prime numbers in this range"
+
+    return primes  # Return the list of primes
+
+start = int(input("Enter start number:"))
+end = int(input("Enter end number:"))
+
+result = find_prime(start, end)
+
+if isinstance(result, str):
+    print(result)
+else:
+    print(" ".join(map(str, result)))  # Print primes separated by spaces
