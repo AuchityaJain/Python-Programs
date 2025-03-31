@@ -1,0 +1,16 @@
+def main():
+    print("Enter the value of N")
+    N = int(input())
+
+    sm = 0
+
+    if N < 0:
+        print("Invalid input")
+    else:
+        for i in range(1, N + 1):
+            sm = sm + i
+
+        print("The sum of first", N, "natural numbers is", sm)
+
+if __name__ == "__main__":
+    main()
