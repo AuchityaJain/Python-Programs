@@ -1,0 +1,37 @@
+import numpy as np
+
+def get_temperatures(num_days):
+    temperatures = []
+    for day in range(num_days):
+        while True:
+            try:
+                temp = float(input(f"Day {day + 1}: "))
+                temperatures.append(temp)
+                break
+            except ValueError:
+                print("Invalid input! Please enter a numeric value.")
+    return np.array(temperatures)
+
+num_days = int(input("Enter the number of days: "))
+print(f"\nEnter temperature records for {num_days} days:")
+temperatures = get_temperatures(num_days)
+
+mean_temp = np.mean(temperatures)
+max_temp_day = np.argmax(temperatures) + 1
+max_temp = np.max(temperatures)
+min_temp_day = np.argmin(temperatures) + 1
+min_temp = np.min(temperatures)
+
+sorted_indices = np.argsort(temperatures)
+sorted_temperatures = temperatures[sorted_indices]
+
+print("\nTemperature records for the city:")
+print(temperatures)
+
+print(f"\nMean Temperature for {num_days} Days : {mean_temp:.2f}")
+print(f"Day with the Highest Temperature: Day {max_temp_day} Temperature: {max_temp}")
+print(f"Day with the Lowest Temperature: Day {min_temp_day} Temperature: {min_temp}")
+
+print("\nDays Sorted by Temperature (Ascending order):")
+for index in sorted_indices:
+    print(f"Day {index + 1}: Temperature {temperatures[index]}")
