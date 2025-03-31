@@ -1,0 +1,26 @@
+def fibonacci(num):
+    """Function to return the Fibonacci number for a given month"""
+    if num < 1 or num > 12:
+        print("Invalid month")
+        return None  # Return None to indicate an error
+
+    fib_sequence = [0, 1]
+    while len(fib_sequence) < 12:
+        fib_sequence.append(fib_sequence[-1] + fib_sequence[-2])
+
+    return fib_sequence[num - 1]
+
+
+def main():
+    """Main function to get user input and display the amoeba size"""
+    month = int(input("Enter the month as numeric value: "))
+    amoeba_size = fibonacci(month)
+
+    if amoeba_size is not None:  # Check if a valid Fibonacci number was returned
+        print("The amoeba size is", amoeba_size)
+
+    return
+
+
+if __name__ == '__main__':
+    main()
