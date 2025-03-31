@@ -1,0 +1,35 @@
+import openpyxl
+from openpyxl import Workbook, load_workbook
+
+def calculate_totals(unit_price, quantity):
+    total_cost = unit_price * quantity
+    discounted_price = total_cost * 0.9
+    return total_cost, discounted_price
+
+def main():
+    wb = Workbook()
+    ws = wb.active
+    ws.title = "Products"
+
+    headers = ["Product", "Unit Price", "Quantity", "Total Cost", "Discounted Price"]
+    ws.append(headers)
+
+    num_products = int(input("Enter the number of products: "))
+
+    for _ in range(num_products):
+        product_name = input("Enter product name: ")
+        unit_price = float(input(f"Enter unit price for {product_name}: "))
+        quantity = int(input(f"Enter quantity for {product_name}: "))
+
+        total_cost, discounted_price = calculate_totals(unit_price, quantity)
+        ws.append([product_name, unit_price, quantity, total_cost, discounted_price])
+
+    wb.save("products.xlsx")
+
+    ws = wb.active  # Re-activate the worksheet after saving
+    print("\nData written to products.xlsx. Reading data from the file:\n")
+    for row in ws.iter_rows(values_only=True):
+        print(row)
+
+if __name__ == "__main__":
+    main()
