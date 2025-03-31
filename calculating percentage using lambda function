@@ -1,0 +1,9 @@
+subject1=int(input("Enter marks for subject1:"))
+subject2=int(input("Enter marks for subject2:"))
+subject3=int(input("Enter marks for subject3:"))
+
+cal=lambda subject1,subject2,subject3:((subject1+subject2+subject3)*100)/300
+
+percentage=cal(subject1,subject2,subject3)
+
+print("percentage is",percentage)
