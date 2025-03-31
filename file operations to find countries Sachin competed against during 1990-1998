@@ -1,0 +1,16 @@
+import csv
+
+with open("OneDayInternational.csv", mode="r", encoding="utf-8") as file:
+    reader = csv.DictReader(file)
+
+    countries = set()
+
+    for row in reader:
+        countries.add(row["Versus"])
+
+    sorted_countries = sorted(countries)
+
+    print("Countries Sachin played against (1990-1998):")
+
+    for country in sorted_countries:
+        print(country)
