@@ -1,0 +1,17 @@
+import csv
+from collections import defaultdict
+
+with open("OneDayInternational.csv", mode='r', encoding='utf-8') as file:
+    reader = csv.DictReader(file)
+
+    runs_by_year = defaultdict(int)
+
+    for row in reader:
+        year = row["MatchDate"].split("/")[-1]
+        runs = int(row["Runs"])
+        runs_by_year[year] += runs
+
+    print("Year wise total runs by Sachin (1990-1998):")
+
+    for year in sorted(runs_by_year.keys()):
+        print(year, runs_by_year[year])
