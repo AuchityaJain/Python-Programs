@@ -1,0 +1,35 @@
+def checkOdd(number):
+    return number % 2 != 0
+
+def isAutomorphic(N):
+    sq = N * N
+    temp = N
+    while temp > 0:
+        if temp % 10 != sq % 10:
+            return False
+        temp //= 10
+        sq //= 10
+    return True
+
+def main():
+    N = int(input("Enter the number:"))
+
+    if not checkOdd(N):
+        print("Not an Odd Number")
+        return
+
+    if isAutomorphic(N):
+        print("Automorphic Number")
+    else:
+        print("Not an Automorphic Number")
+
+    # Outputs for debugging (if needed, remove for submission)
+    if checkOdd(N) and not isAutomorphic(N):
+        print("Debug: Non-Automorphic Odd Number")
+    elif checkOdd(N) and isAutomorphic(N):
+        print("Debug: Automorphic Odd Number")
+    elif not checkOdd(N):
+        print("Debug: Even Number")
+
+if __name__ == "__main__":
+    main()
