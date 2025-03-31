@@ -1,0 +1,24 @@
+import json
+
+def filter_customers(loan_type):
+    with open("loan.json", "r") as file:
+        data = json.load(file)
+
+    customers_found = []
+
+    for customer in data["customers"]:
+        for loan in customer["loans"]:
+            if loan["loan_type"].lower() == loan_type.lower():
+                customers_found.append((customer["Account_Number"], customer["customer_name"], loan["loan_amount"]))
+
+    if customers_found:
+        print("\nLoan Details\n")
+        print("{:<20} {:<15} {:<10}".format("Account_Number", "Customer_Name", "Loan_Amount"))
+
+        for account, name, amount in customers_found:
+            print("{:<20} {:<15} {:<10}".format(account, name, amount))
+    else:
+        print("No customers available")
+
+loan_type = input("Enter the loan type\n")
+filter_customers(loan_type)
