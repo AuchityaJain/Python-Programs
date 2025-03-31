@@ -1,0 +1,11 @@
+import csv
+
+with open("OneDayInternational.csv", mode='r', encoding='utf-8') as file:
+    reader = csv.DictReader(file)
+
+    count = 0
+    for row in reader:
+        print(row)
+        count += 1
+        if count == 10:
+            break
