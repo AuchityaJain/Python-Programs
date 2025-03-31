@@ -1,0 +1,46 @@
+# Dates.py (Module 1)
+
+def is_leap(year):
+    if (year % 4 == 0 and year % 100 != 0) or (year % 400 == 0):
+        return 'Leap Year'
+    else:
+        return 'Not Leap Year'
+
+def month_name(no):
+    months = [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+    ]
+    if 1 <= no <= 12:
+        return months[no - 1]
+    else:
+        return "Invalid Month Number"
+
+def days_in_month(month, year):
+    if month < 1 or month > 12:
+        return "Invalid Month"
+
+    days_in_months = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+
+    if month == 2 and is_leap(year) == 'Leap Year':
+        return 29
+    else:
+        return days_in_months[month - 1]
+
+# time_table.py (Module 2)
+import Dates
+
+def main():
+    ### Write your code here
+    
+    year = int(input("Enter year as 4 digits (e.g: 2002):"))
+    month_number = int(input("Enter month number:"))
+
+    print("Year:", Dates.is_leap(year))
+    print("Month Name:", Dates.month_name(month_number))
+    print("Days in month:", Dates.days_in_month(month_number, year))
+    
+    return
+
+if __name__ == '__main__':
+    main()
