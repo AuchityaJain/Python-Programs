@@ -1,0 +1,38 @@
+class Book:
+    def __init__(self, book_name, book_price, author_name):
+        self._Book__book_name = book_name
+        self._Book__book_price = book_price
+        self._Book__author_name = author_name
+
+    def set_book_name(self, bname):
+        self._Book__book_name = bname
+    def set_book_price(self, bprice):
+        self._Book__book_price = bprice
+    def set_author_name(self, aname):
+        self._Book__author_name = aname
+
+    def get_book_name(self):
+        return self._Book__book_name
+    def get_book_price(self):
+        return self._Book__book_price
+    def get_author_name(self):
+        return self._Book__author_name
+
+book_name = input("Enter the Book name:")
+book_price = float(input("Enter the Book price:"))
+author_name = input("Enter the Author name:")
+
+book_obj = Book(book_name, book_price, author_name)
+
+print("\nBook Details Before Price Renewal:")
+print("Book Name:", book_obj.get_book_name())
+print("Book Price:", book_obj.get_book_price())
+print("Author Name:", book_obj.get_author_name())
+
+new_price = float(input("\nEnter the new price:"))
+book_obj.set_book_price(new_price)
+
+print("\nBook Details After Price Renewal:")
+print("Book Name:", book_obj.get_book_name())
+print("Book Price:", book_obj.get_book_price())
+print("Author Name:", book_obj.get_author_name())
