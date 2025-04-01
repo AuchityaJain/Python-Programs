@@ -1,0 +1,14 @@
+name_list = []
+student_list = []
+
+with open('student_marks.txt', 'r') as file:
+    student_list = file.readlines()
+
+for i in range(0, len(student_list), 2):
+    name = student_list[i]
+    score = int(student_list[i + 1])
+    if score >= 80:
+        name_list.append(name)
+
+for i in name_list:
+    print(name)
