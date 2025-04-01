@@ -1,0 +1,25 @@
+class Project:
+    def __init__(self, project_id, project_name):
+        self.project_id = project_id
+        self.project_name = project_name
+
+class Module(Project):
+    def __init__(self, project_id, project_name, module_name):
+        super().__init__(project_id, project_name)
+        self.module_name = module_name
+
+class Task(Module):
+    def __init__(self, project_id, project_name, module_name, task_name):
+        super().__init__(project_id, project_name, module_name)
+        self.task_name = task_name
+
+    def display(self):
+        print(f"Project Id: {self.project_id}\nProject Name: {self.project_name}\nModule Name: {self.module_name}\nTask Name: {self.task_name}")
+
+project_id = input("Enter Project Id:\n")
+project_name = input("Enter Project Name:\n")
+module_name = input("Enter Module Name:\n")
+task_name = input("Enter Task Name:\n")
+
+task_obj = Task(project_id, project_name, module_name, task_name)
+task_obj.display()
